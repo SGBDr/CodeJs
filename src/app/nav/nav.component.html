@@ -1,0 +1,50 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Code JS</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="home">
+        <mat-icon>home</mat-icon>
+        <span>&nbsp; &nbsp;Home </span> 
+      </a>
+      <a mat-list-item routerLink="tips">
+        <mat-icon>star</mat-icon>
+        <span>&nbsp; Tips</span>
+      </a>
+      <a mat-list-item routerLink="info">
+        <mat-icon>message</mat-icon>
+        <span>&nbsp; Furom</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content style="background-color: rgb(230, 230, 230);">
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <div class="d-flex justify-content-between w-100">
+        <div>
+          <span>
+            {{getRoute(route.url) | uppercase}}
+          </span>
+        </div>
+        <div class="d-flex align-items-center">
+          <div class="d-flex justify-content-center border border-dark p-1">
+            <div class="rounded-circle theme" style="background-color: whitesmoke;"></div>
+            <div class="rounded-circle theme" style="background-color: black;"></div>
+          </div>
+        </div>
+      </div>
+    </mat-toolbar>
+    <div class="m-0 p-0 w-100 h-100">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

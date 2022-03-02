@@ -1,0 +1,60 @@
+.ph{
+    height: 50px;
+    position: relative;
+    top: -30px;
+    border-radius: 5px;
+    padding: 3px 0px 3px 30px;
+    text-align: left;
+    background-color: white;
+}
+
+.pd{
+    height: 70px;
+    position: relative;
+    top: -10px;
+    border-radius: 5px;
+    padding: 3px;
+    text-align: left;
+    background-color: white; 
+    overflow-x: auto;
+}
+
+.pd::-webkit-scrollbar {
+    display: none;
+  }
+
+.hed{
+    height: 90px;
+    background-color: rgb(106, 106, 223);
+    margin: 20px 10px 5px 10px;
+}
+
+.name_p{
+    width: 150px;
+    height: 25px;
+    text-align: center;
+    padding: 2px;
+    border: none;
+    border-radius: 2px;
+    margin: 0px;
+    transition-delay: 1000000000000000000s;
+}
+
+.name_i_p{
+    height: 25px;
+    text-align: center;
+    padding: 2px;
+    border: none;
+    margin: 0px;
+}
+
+.type_p{
+    width: 150px;
+    height: 25px;
+    text-align: center;
+    padding: 2px;
+    border: none;
+    border-radius: 2px;
+    margin: 0px;
+    transition-delay: 1000000000000000000s;
+}

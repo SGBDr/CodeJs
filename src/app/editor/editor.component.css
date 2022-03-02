@@ -1,0 +1,39 @@
+.con{
+    background-color: white;
+    height: 300px;
+    margin: 5px;
+}
+
+.lan{
+    background-color: rgb(216, 216, 252);
+    width: 50px;
+    padding: 2px;
+    height: 40px;
+    margin: 0px;
+    text-align: center;
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
+
+.lan:hover{
+    transform: rotate(360deg) scale(1.25);
+}
+
+.text{
+    margin: 0px;
+    padding: 3px;
+    border: none;
+    background-color: whitesmoke;
+    font-family: monospace;
+    transition-delay: 9999999999999999999999999999999999999999999s;
+}
+
+.ele{
+    padding: 8px;
+    border-radius: 20px;
+    transition-duration: 0.5s;
+}
+
+.ele:hover{
+    transform: scale(1.5);
+}

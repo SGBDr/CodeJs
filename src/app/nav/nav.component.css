@@ -1,0 +1,30 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.theme{
+  margin: 0px; 
+  padding: 0px;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  transition-duration: 0.5s;
+}
+
+.theme:hover{
+  transform: scale(1.2);
+}
