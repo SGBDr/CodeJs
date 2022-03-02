@@ -1,6 +1,7 @@
 <div class="con">
     <div class="d-flex justify-content-between">
-        <h2 class="lan">JS</h2>
+        <h2 class="lan">{{lan}}</h2>
+        <h2 class="">{{diff.toLowerCase() === "easy" ? '*' : diff.toLowerCase() === "medium" ? '* *' : diff.toLowerCase() === "hard" ? '* * *' : '* * * *'}}</h2>
         <h2 class="ele" style="cursor: pointer;" (click)="toggle()">
             <svg *ngIf="!test" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-bar-left" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5zM10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5z"/>
@@ -12,6 +13,6 @@
     </div>
     <hr>
     <code>
-        <textarea id="cccc" class="w-100 h-100 text" [(ngModel)]="content" spellcheck="false" #edit></textarea>
+        <textarea id="cccc" class="w-100 h-100 text" [(ngModel)]="content" (ngModelChange)="change()" spellcheck="false" #edit></textarea>
     </code>
 </div>

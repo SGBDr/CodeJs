@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import * as $ from 'jquery';
+import { Subject, Subscriber } from 'rxjs';
 
 @Component({
   selector: 'app-editor',
@@ -14,10 +15,24 @@ export class EditorComponent implements OnInit {
   @ViewChild('edit')
   public edit! : Element
 
-  constructor() { }
+  @Input()
+  public lan! : String
+
+  @Input()
+  public diff! : String
+
+  public con = new Subject<any>()
+
+  constructor() {}
+
+  emit() {this.con.next(0)}
 
   toggle() : void{
     this.test = !this.test;
+  }
+
+  change(){
+    this.emit()
   }
 
   ngOnInit(): void {

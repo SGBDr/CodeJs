@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Puzzle } from './interface/puzzle.interface';
 
 @Injectable({
@@ -41,17 +42,21 @@ export class PuzzleService{
                  '    }\n\n'+
                  '    test(input) {\n' +
                  '        //please don\'t update this function\n' + 
-                 '        return this.getKey();\n'+
+                 '        return this.getKey(input);\n'+
                  '    }\n\n'+
                  '}\n\n',
       code_very : 'class Test {'+
                   'test(exp, got) {'+
-                  'if(parseInt(exp) === got)return true;'+
+                  'console.log(exp, got);'+
+                  'console.log(exp === got);'+
+                  'if(exp === "Oupss" && got === exp)return true;'+
+                  'if(exp === "Oupss" && got != exp)return false;'+
+                  'if(parseFloat(exp) === parseFloat(got))return true;'+
                   'else return false;'+
                   '}'+
                   '}',
       lan : 'JS',
-      diff : 'Easy',
+      diff : 'easy',
       kind : "Algorithmic",
       note : "If input is empty you have to print out *Oupss*",
       contrains : [
@@ -64,5 +69,13 @@ export class PuzzleService{
     }
   ]
 
-  constructor() {}
+  puzzSubject = new Subject<Puzzle[]>()
+
+  constructor() {
+    this.emit()
+  }
+
+  emit(){
+    this.puzzSubject.next(this.puzzles)
+  }
 }

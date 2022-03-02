@@ -7,7 +7,7 @@
         <div class="m-2 pd">
             <div class="d-flex">
                 <div class="d-flex p-3">
-                    <input type="text" placeholder="  Recherche  " class="name_p shadow">
+                    <input type="text" placeholder="  Recherche  " (ngModelChange)="change1()" [(ngModel)]="name" class="name_p shadow">
                     <div class="name_i_p shadow">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div class="p-3">
-                    <select id="type" class="type_p shadow">
+                    <select id="type" (change)="change1()" class="type_p shadow">
                         <option *ngFor="let dif of difficulty, let i = index " [value]="i">{{dif}}</option>
                     </select>
                 </div>
@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="p-3">
-                    <select id="type" class="type_p shadow">
+                    <select id="type" class="type_p shadow" (change)="change1()" #lan>
                         <option *ngFor="let lan of languages[index_languages], let i = index" [value]="i">{{lan}}</option>
                     </select>
                 </div>
@@ -36,32 +36,38 @@
     </div>
 
     <div class="mt-5 p-4">
-        <div class="">
+        <div class="" *ngIf="easy.length != 0">
             <h3>Easy</h3>
             <hr>
             <div class="row">
-                <app-puzzle *ngFor="let puzz of puzS.puzzles" [puzzle]="puzz"  class="col-md-6 p-2"></app-puzzle>
-                <app-puzzle *ngFor="let puzz of puzS.puzzles" [puzzle]="puzz"  class="col-md-6 p-2"></app-puzzle>
-                <app-puzzle *ngFor="let puzz of puzS.puzzles" [puzzle]="puzz"  class="col-md-6 p-2"></app-puzzle>
+                <app-puzzle *ngFor="let puzz of easy" [puzzle]="puzz" class="col-md-6 p-2"></app-puzzle>
             </div>
         </div>
-        <div class="">
+        <div class="" *ngIf="medium.length != 0">
             <h3>Medium</h3>
             <hr>
             <div class="row">
-                <app-puzzle *ngFor="let puzz of puzS.puzzles" [puzzle]="puzz"  class="col-md-6 p-2"></app-puzzle>
-                <app-puzzle *ngFor="let puzz of puzS.puzzles" [puzzle]="puzz"  class="col-md-6 p-2"></app-puzzle>
-                <app-puzzle *ngFor="let puzz of puzS.puzzles" [puzzle]="puzz"  class="col-md-6 p-2"></app-puzzle>
-                <app-puzzle *ngFor="let puzz of puzS.puzzles" [puzzle]="puzz"  class="col-md-6 p-2"></app-puzzle>
+                <app-puzzle *ngFor="let puzz of medium" [puzzle]="puzz" class="col-md-6 p-2"></app-puzzle>
             </div>
         </div>
-        <div class="">
+        <div class="" *ngIf="hard.length != 0">
             <h3>Hard</h3>
             <hr>
+            <div class="row">
+                <app-puzzle *ngFor="let puzz of hard" [puzzle]="puzz" class="col-md-6 p-2"></app-puzzle>
+            </div>
         </div>
-        <div class="">
+        <div class="" *ngIf="tohard.length != 0">
             <h3>Too Hard</h3>
             <hr>
+            <div class="row">
+                <app-puzzle *ngFor="let puzz of tohard" [puzzle]="puzz" class="col-md-6 p-2"></app-puzzle>
+            </div>
+        </div>
+        <div *ngIf="easy.length != 0 && medium.length != 0 && hard.length != 0 && tohard.length != 0">
+            <h3 class="alert alert-info">
+                No puzzle fund
+            </h3>
         </div>
     </div>
 
