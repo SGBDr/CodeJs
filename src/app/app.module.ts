@@ -18,6 +18,7 @@ import { SolveComponent } from './solve/solve.component';
 import { EditorComponent } from './editor/editor.component';
 import { ToastComponent } from './toast/toast.component';
 import { FormsModule } from '@angular/forms';
+import { AddPuzzleComponent } from './add-puzzle/add-puzzle.component';
 
 const routes : Routes = [
   {path:'home', component: HomeComponent},
@@ -34,7 +35,8 @@ const routes : Routes = [
     PuzzleComponent,
     SolveComponent,
     EditorComponent,
-    ToastComponent
+    ToastComponent,
+    AddPuzzleComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

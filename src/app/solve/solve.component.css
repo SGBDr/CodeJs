@@ -30,3 +30,13 @@
 .test_b:hover{
     transform: scale(1.5);
 }
+
+.deco{
+    transition-duration: 1s;
+}
+
+.deco1{
+    transform: translateY(100px);
+    position: absolute;
+    opacity: 0.5;
+}
