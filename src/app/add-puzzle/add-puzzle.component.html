@@ -3,14 +3,14 @@
       <div class="name m-1 shadow p-3">
         <div class="p-3">
           <h5>Name *</h5>
-          <input type="text" placeholder="Puzzle Name" class="name_text shadow">
+          <input type="text" placeholder="Puzzle Name" name="name" [(ngModel)]="name" class="name_text shadow">
         </div>
-        <h1>Preview *</h1>
-        <textarea class="overflow-auto preview shadow" name="" id="" rows="10"></textarea>
+        <h1>Preview (> 20 character) *</h1>
+        <textarea class="overflow-auto preview shadow" name="preview" [(ngModel)]="preview" id="" rows="10"></textarea>
       </div>
       <div class="m-1 desc shadow p-3">
-        <h1>Description *</h1>
-        <textarea class="description preview shadow" name="" id="" rows="15"></textarea>
+        <h1>Description (> 100 character) *</h1>
+        <textarea class="description preview shadow" name="desc" [(ngModel)]="desc" id="" rows="15"></textarea>
       </div>
     </div>
 
@@ -19,24 +19,197 @@
         <input type="text" placeholder="Language" [placeholder]="'JS'" class="name_text shadow" disabled>
         <br>
         <h5>Difficulty *</h5>
-        <select name="" class="w-100 shadow name_text" id="">
+        <select name="diff" [(ngModel)]='diff' class="w-100 shadow name_text" id="">
           <option value="Easy">Easy</option>
+          <option value="Medium">Medium</option>
+          <option value="Hard">Hard</option>
+          <option value="Too Hard">Too Hard</option>
         </select>
         <br>
         <h5>Kind *</h5>
-        <select name="" class="w-100 shadow name_text" id="">
-          <option value="Easy">Easy</option>
+        <select name="kind" [(ngModel)]="kind" class="w-100 shadow name_text" id="">
+          <option value="Algorithmic">Algorithmic</option>
         </select>
-        <h5>Note : (less than 100 char)</h5>
-        <input type="text" placeholder="Language" [maxLength]="100" [placeholder]="'JS'" class="name_text shadow">
+        <h5>Note : (less than 100 character)</h5>
+        <input type="text" placeholder="Language" name="note" [(ngModel)]="note" [maxLength]="100" [placeholder]="'Note'" class="name_text shadow">
       </div>
       <div class="nset p-3">
-        <div class="shadow hset mb-3 p-2">
-
+        <div class="shadow hset mb-3 p-2 overflow-auto">
+            <div class="d-flex p-3">
+                <input type="text" name="constrains" placeholder=" Add constrains (more than 6 character) " [(ngModel)]="constrains" class="name_p shadow">
+                <div class="name_i_p shadow" (click)="addCon(constrains)">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;" width="28" height="28" fill="currentColor" class="bi del bi-plus-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                    </svg>
+                </div>
+            </div>
+            <div>
+                <span class="con shadow m-2" *ngFor="let c of cons, let i = index">
+                    {{c[1]}}
+                    <svg xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;" (click)="deleteCon(i)" width="16" height="16" fill="currentColor" class="bi bi-x-lg del" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                        <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                    </svg>
+                </span>
+            </div>
         </div>
-        <div class="shadow hset p-2">
-
+        <div class="shadow hset p-2 overflow-auto">
+          <div class="d-flex p-3">
+            <input type="text" name="constrains" placeholder=" Add Tips (more than 6 character) " [(ngModel)]="tip" class="name_p shadow">
+            <div class="name_i_p shadow" (click)="addTips(tip)">
+                <svg xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;" width="28" height="28" fill="currentColor" class="bi del bi-plus-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                </svg>
+            </div>
+        </div>
+        <div>
+            <span class="con shadow m-2" *ngFor="let t of tips, let i = index">
+                {{t[1]}}
+                <svg xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;" (click)="deleteTip(i)" width="16" height="16" fill="currentColor" class="bi bi-x-lg del" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                    <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                </svg>
+            </span>
         </div>
       </div>
     </div>
-  </form>
+  </div>
+  <div class="test_d m-1 p-3 d-flex shadow w-100">
+    <div style="width: 40%;" class="p-3">
+      <h2>
+        Test
+        <span class="info_s">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+          </svg>
+          <div class="info text-light">
+            <h5>To talk about string, use << "" >></h5>
+            <h5>Exemple : "1 2 3 4 5 6"</h5>
+            <h5>To talk about number, juste write it,<br> same thing for all other type</h5>
+            <h5>Exemple : 12</h5>
+            <h5>Exemple : {{"{'name' : 'j'}"}} , [1, 2, 5]</h5>
+          </div>
+        </span>
+      </h2>
+      <div>
+        <input type="text" name="test_name" placeholder="Test's name *" [(ngModel)]="c1" class="name_test"><br>
+        <textarea type="text" name="test_input" placeholder="Input *" [(ngModel)]="c2" class="name_put"></textarea><br>
+        <textarea type="text" name="test_output" placeholder="Test's name *" [(ngModel)]="c3" class="name_put"></textarea><br>
+        <div class="d-flex justify-content-between">
+          <h6 class="bad">{{error_test}}</h6>
+          <button class="val rounded shadow" (click)="addTests()">Add</button>
+        </div>
+      </div>
+    </div>
+    <div class="shadow ml-5 p-5" style="width: 60%;">
+      <span class="con shadow" *ngFor="let t of tests">
+        {{t.name}}
+        <svg xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;" (click)="deleteTests(t.id)" width="16" height="16" fill="currentColor" class="bi bi-x-lg del" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+            <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+        </svg>
+    </span>
+    </div>
+  </div>
+
+  <div class="shadow bg-white m-1 p-3">
+    <h2>
+      Minimum of Code
+      <span class="info_s">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+        </svg>
+        <div class="info p-2 text-light">
+          <h3>This code will be give to <br> the coder as a start point. <br> You can add comment to help him</h3>
+          <code>
+            Name the Classe and the function start as you want <br>
+            but in function test, just update <br> start if it's name is update behind
+          </code>
+        </div>
+      </span>
+    </h2>
+    <div class="d-flex justify-content-between">
+      <div class="editor" #edtmin style="width: 60%;height: 350px;"></div>
+      <div class="bg-dark m-1 p-3" style="width: 40%;">
+        <code>
+          <button class="btn_test" (click)="runVerif1(a1.getSession().getValue())">Test</button>
+          <h2>Output</h2>
+          <div>
+            {{outmin}}
+          </div>
+        </code>
+      </div>
+    </div>
+  </div>
+
+  <div class="shadow bg-white m-1 p-3">
+    <h2>
+      Verification
+      <span class="info_s">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+        </svg>
+        <div class="info p-2 text-light">
+          write your verification without modify the name and the <br>
+          parameters of verify function. <br>
+          write how you want the verification become. <br>
+          Tips : comparaison of Object is not secure with a simple ===
+        </div>
+      </span>
+    </h2>
+    <div class="d-flex justify-content-between">
+      <div class="editor" #edtverif style="width: 60%;height: 350px;"></div>
+      <div class="bg-dark m-1 p-3" style="width: 40%;">
+        <code>
+          <button class="btn_test" (click)="runVerif2(a2.getSession().getValue())">Test</button>
+          <h2>Output</h2>
+          <div>
+            {{outverif}}
+          </div>
+        </code>
+      </div>
+    </div>
+  </div>
+
+  <div class="shadow bg-white m-1 p-3">
+    <h2>
+      Solve Your Puzzle now 😅 
+      <span class="info_s">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+        </svg>
+        <div class="info p-2 text-light">
+          <h3>You have to solve your puzzle now 🤣</h3>
+        </div>
+      </span>
+    </h2>
+    <div class="d-flex justify-content-between">
+      <div class="editor" #edtsolve style="width: 60%;height: 350px;"></div>
+      <div class="bg-dark m-1 p-3 ml-2" style="width: 40%;">
+        <button class="btn_test" (click)="runTest()" [disabled]="tests.length === 0">Run</button>
+        <code>
+          <h2>Output</h2>
+          <div class="">
+            {{outsolve}}
+          </div>
+        </code>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-3 p-3 w-100 shadow">
+    <button class="w-100 p-3 f_btn shadow rounded"
+    (click)="sharPuzzle()"
+    [disabled]="!(nbre_v_test === tests.length && diff.trim() !== '' && kind.trim() !== '' && name.trim().length != 0 && preview.trim().length >= 20 && desc.trim().length >= 100)"
+    >
+      Share Puzzle
+    </button>
+  </div>
+</form>
+<app-toast *ngFor="let tt of toasts" [test]="tt[0]" [display]="tt[1]" [good]="tt[2]" [val]="tt[3]"></app-toast>

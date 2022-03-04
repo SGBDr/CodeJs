@@ -19,7 +19,6 @@
                         <option *ngFor="let dif of difficulty, let i = index " [value]="i">{{dif}}</option>
                     </select>
                 </div>
-
                 <div class="p-3">
                     <select id="type" [selectedIndex]="index_types" (change)="change()" class="type_p shadow">
                         <option *ngFor="let ty of kind" [value]="ty">{{ty}}</option>

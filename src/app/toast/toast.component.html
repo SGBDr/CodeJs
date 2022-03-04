@@ -12,7 +12,14 @@
     </div>
     <hr>
     <div class="p-2 text-dark">
-        <h2 *ngIf="good">Good Job</h2>
-        <h2 *ngIf="!good">Try Again</h2>
+        <div *ngIf="val === undefined">
+            <h2 *ngIf="good">Good Job</h2>
+            <h2 *ngIf="!good">Try Again</h2>
+        </div>
+        <div *ngIf="val !== undefined">
+            <code>
+                val
+            </code>
+        </div>
     </div>
 </div>

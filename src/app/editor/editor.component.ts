@@ -1,6 +1,7 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import * as $ from 'jquery';
-import { Subject, Subscriber } from 'rxjs';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Subject } from 'rxjs';
+
+import * as ace from "ace-builds";
 
 @Component({
   selector: 'app-editor',
@@ -9,8 +10,10 @@ import { Subject, Subscriber } from 'rxjs';
 })
 export class EditorComponent implements OnInit {
 
+  @ViewChild("editor") editor!: ElementRef<HTMLElement>;
+
   @Input()
-  public content! : String
+  public aceEditor! : any
   public test : Boolean = true
   @ViewChild('edit')
   public edit! : Element
@@ -27,16 +30,31 @@ export class EditorComponent implements OnInit {
 
   emit() {this.con.next(0)}
 
+  ngAfterViewInit(): void {
+    ace.config.set("fontSize", "14px");
+
+    ace.config.set('basePath', 'https://unpkg.com/ace-builds@1.4.12/src-noconflict');
+
+    this.aceEditor = ace.edit(this.editor.nativeElement);
+
+    this.aceEditor.setOptions({
+      enableBasicAutocompletion: true,
+      enableSnippets: true,
+      enableLiveAutocompletion: true
+    });
+
+    this.aceEditor.getSession().setMode("ace/mode/javascript");
+    this.aceEditor.setTheme('ace/theme/twilight');
+    
+    this.aceEditor.addEventListener('change', () => {
+      this.emit()
+    })
+  }
+
   toggle() : void{
     this.test = !this.test;
   }
 
-  change(){
-    this.emit()
-  }
-
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
 }

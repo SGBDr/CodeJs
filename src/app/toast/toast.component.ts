@@ -16,7 +16,11 @@ export class ToastComponent implements OnInit {
   @Input()
   good! : Boolean
 
-  constructor() { }
+  @Input()
+  val! : any
+
+  constructor() { 
+  }
 
   close(): void {
     this.display = false

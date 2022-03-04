@@ -8,6 +8,7 @@ export interface Puzzle{
     test : Test[]
     code_min : String
     code_very : String
+    code_solve : String
     lan : String
     diff : String
     kind : String

@@ -18,7 +18,7 @@
     text-align: left;
 }
 
-.main, h1, h5{
+.main, h1, h5, input, textarea{
     font-family: 'Courier New', Courier, monospace;
 }
 
@@ -40,4 +40,119 @@
 
 .hset{
     height: 50%;
+}
+
+.name_p{
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    padding: 2px;
+    border: none;
+    border-radius: 2px;
+    margin: 0px;
+    transition-delay: 1000000000000000000s;
+}
+
+.name_test{
+    width: 100%;
+    height: 30px;
+    transition-delay: 1000000000000000000s;
+    border: none;
+    border: 2px solid whitesmoke;
+}
+
+.name_put{
+    width: 100%;
+    transition-delay: 1000000000000000000s;
+    height: 100px;
+    margin-top: 5px;
+    border: 2px solid whitesmoke;
+}
+
+.val{
+    background-color: transparent;
+    width: 45px;
+    height: 25px;
+    padding: 6px;
+    border: none;
+    transition-duration: 0.5s;
+}
+
+.val:hover{
+    transform: scale(1.2);
+}
+
+.name_i_p{
+    height: 30px;
+    text-align: center;
+    padding: 2px;
+    border: none;
+    margin: 0px;
+}
+
+.con{
+    width: auto;
+    padding: 5px;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+.del{
+    transition-duration: 0.5s;
+}
+
+.del:hover{
+    transform: scale(1.2) rotate(90deg);
+}
+
+
+.info_s:hover .info{
+    display: block;
+    transform: scale(1);
+}
+
+.info{
+    padding: 5px;
+    transform: scale(0);
+    display: none;
+    z-index: 100;
+    position: absolute;
+    transition-duration: 1s;
+    background-color: black;
+}
+
+.bad{
+    background-color: black;
+    padding: 5px;
+    color: red;
+}
+
+.good{
+    background-color: none;
+    color: black;
+}
+
+.editor{
+    width: 100%;
+    height: 100px;
+}
+
+.btn_test{
+    background-color: rgb(133, 172, 245);
+    border: none;
+    transition-duration: 0.5s;
+}
+
+.btn_test:hover{
+    transform: scale(1.5);
+}
+
+.f_btn{
+    border: none;
+    background-color: rgb(112, 112, 112);
+    transition-duration: 0.5s;
+}
+
+.f_btn:hover{
+    transform: scale(1.059);
 }

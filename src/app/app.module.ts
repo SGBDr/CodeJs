@@ -33,6 +33,7 @@ const routes : Routes = [
     NavComponent,
     HomeComponent,
     PuzzleComponent,
+    DocComponent,
     SolveComponent,
     EditorComponent,
     ToastComponent,

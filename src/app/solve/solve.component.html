@@ -54,11 +54,12 @@
     
     <div class="accordion-item">
       <div id="collapseThree" class="show collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-        <div class="accordion-body" style="min-height: 500px;">
+        <div class="accordion-body" style="min-height: 650px;">
             <div class="d-flex align-items-stretch">
                 <app-editor #editor [diff]="puzz.diff" [lan]="puzz.lan" style="width: 100%;"></app-editor>
-                <div *ngIf="editor.test" style="width: 40%;height: 100%;" class="d-flex flex-column p-1 bd-highlight">
+                <div *ngIf="editor.test" style="width: 40%;height: 100%;" class="d-flex flex-column bd-highlight">
                     <div style="height: 50%;" class="output overflow-auto w-100 mb-2 bg-dark bd-highlight p-3 text-light">
+                        <h2>{{getPercent()}}%</h2>
                         <h3>Out Put</h3>
                         <code style="height: 250px;">
                             <pre>{{error}}</pre>
@@ -82,7 +83,7 @@
                                 <button class="test_b shadow" (click)="startAll()" data-bs-toggle="tooltip" title="Start All Test">
                                     Start Test
                                 </button>
-                                <button class="test_b shadow" data-bs-toggle="tooltip" title="Submit Code">
+                                <button class="test_b shadow" data-bs-toggle="tooltip" title="Submit Code" [disabled]="!dis()">
                                     Share
                                 </button>
                             </div>

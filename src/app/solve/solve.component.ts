@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';$
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Compiler } from '../exec/Compil';
@@ -17,11 +17,13 @@ export class SolveComponent implements OnInit {
 
   error : String | unknown = "No Error Yet"
 
+  percent : number = 0
+
   puzz! : Puzzle
 
   toasts : any[] = []
 
-  test_i! : Number[]
+  test_i! : number[]
 
   change = new Subscription()
 
@@ -53,17 +55,27 @@ export class SolveComponent implements OnInit {
     }).then(() => console.log('finish'))
   }
 
-  ngOnInit(): void {
-    let inter = setInterval(() => {
-      if(this.editor){
-        this.editor.content = this.puzz.code_min
-        this.change = this.editor.con.subscribe(() => {
-          this.test_i = ' '.repeat(this.puzz.test.length).split('').map(x => 0)
-          this.toasts = []
-        })
-        clearInterval(inter)
-      }
+  getPercent(){
+    let i = 0
+    let n = this.test_i.length * 2
+    for(let r of this.test_i)if(r === 2)i += 2
+    return Math.round((i / n)*100)
+  }
+
+  ngOnInit(): void {}
+
+  ngAfterViewInit():void{
+    this.editor.aceEditor.session.setValue(this.puzz.code_min)
+    this.change = this.editor.con.subscribe(() => {
+      this.test_i = ' '.repeat(this.puzz.test.length).split('').map(x => 0)
+      this.toasts = []
     })
+  }
+
+  dis():Boolean{
+    let i = 0
+    for(let y of this.test_i)i += y;
+    return i === 2 * this.test_i.length
   }
 
 }
