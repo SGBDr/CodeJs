@@ -54,6 +54,11 @@ export class HomeComponent implements OnInit {
       this.medium = []
       this.hard = []
       this.tohard = []
+
+      x = x.filter(((x) => {
+        if(x.display)return true 
+        return false 
+      }))
       
       x = x.filter(((x) => {
         if(x.name.toLowerCase().indexOf(this.name.toLowerCase()) >= 0)if(x.kind.toLowerCase() === this.kind[this.index_types].toLowerCase())return true 

@@ -15,4 +15,5 @@ export interface Puzzle{
     note : String
     contrains : String[]
     tips : String[]
+    display : boolean
 } 

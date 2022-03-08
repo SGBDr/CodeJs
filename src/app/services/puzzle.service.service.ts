@@ -68,8 +68,9 @@ export class PuzzleService{
       ],
       tips : [
         'When you tidy up you move on'
-      ]
-    }
+      ],
+      display : true
+    },
   ]
 
   coffP = {

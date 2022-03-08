@@ -148,7 +148,8 @@ export class AddPuzzleComponent implements OnInit {
       kind : this.kind,
       note : this.note,
       contrains : this.cons,
-      tips : this.tips
+      tips : this.tips,
+      display : true
     }
     this.puS.addP(temp_p)
     this.route.navigate(['/home'])
