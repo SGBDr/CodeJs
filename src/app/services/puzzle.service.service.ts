@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Puzzle } from './interface/puzzle.interface';
+import { Puzzle } from '../interface/puzzle.interface';
 
 @Injectable({
   providedIn: 'root'

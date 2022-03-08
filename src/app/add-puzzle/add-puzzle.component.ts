@@ -1,10 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Test } from '../interface/test.interface';
 import * as ace from "ace-builds";
-import { PuzzleService } from '../puzzle.service.service';
 import { Compiler } from '../exec/Compil';
 import { Puzzle } from "../interface/puzzle.interface"
 import { Router } from '@angular/router';
+import { PuzzleService } from '../services/puzzle.service.service';
 
 @Component({
   selector: 'app-add-puzzle',
@@ -124,6 +124,7 @@ export class AddPuzzleComponent implements OnInit {
 
   runTest(){
     let y = ""
+    this.outsolve = ""
     for(let t of this.tests){
       let o = t.name
       let x = ''+this.compiler.testAdd(t, this.a3.getSession().getValue(),this.a2.getSession().getValue(), this.toasts)

@@ -15,7 +15,7 @@ export class PuzzleComponent implements OnInit {
 
 
   Solve() : void {
-    this.router.navigate(['solve/' + this.puzzle.id])
+    this.router.navigate(['home/solve/' + this.puzzle.id])
   }
 
   ngOnInit(): void {

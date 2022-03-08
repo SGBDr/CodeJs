@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Puzzle } from '../interface/puzzle.interface';
-import { PuzzleService } from '../puzzle.service.service';
+import { PuzzleService } from '../services/puzzle.service.service';
 
 @Component({
   selector: 'app-home',

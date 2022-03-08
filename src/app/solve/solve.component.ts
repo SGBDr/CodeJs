@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Compiler } from '../exec/Compil';
 import { Puzzle } from '../interface/puzzle.interface';
-import { PuzzleService } from '../puzzle.service.service';
+import { PuzzleService } from '../services/puzzle.service.service';
 
 @Component({
   selector: 'app-solve',

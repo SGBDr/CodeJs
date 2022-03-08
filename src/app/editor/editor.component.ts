@@ -31,7 +31,7 @@ export class EditorComponent implements OnInit {
   emit() {this.con.next(0)}
 
   ngAfterViewInit(): void {
-    ace.config.set("fontSize", "14px");
+    ace.config.set("fontSize", "15px");
 
     ace.config.set('basePath', 'https://unpkg.com/ace-builds@1.4.12/src-noconflict');
 
