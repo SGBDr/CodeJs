@@ -19,19 +19,19 @@ import { EditorComponent } from './editor/editor.component';
 import { ToastComponent } from './toast/toast.component';
 import { FormsModule } from '@angular/forms';
 import { AddPuzzleComponent } from './add-puzzle/add-puzzle.component';
-import { ArticleComponent } from './article/article.component';
 import { FuromComponent } from './furom/furom.component';
 import { TipsComponent } from './tips/tips.component';
 import { AddTipsComponent } from './add-tips/add-tips.component';
 import { PuzzleService } from './services/puzzle.service.service';
+import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 
 const routes : Routes = [
+  {path: '', component: HomeComponent},
   {path:'home', component: HomeComponent},
   {path:'share', component: DocComponent},
   {path:'share/tips/add', component: AddTipsComponent},
   {path:'home/solve/:id', component: SolveComponent},
   {path:'furom', component: FuromComponent},
-  {path:'article', component: ArticleComponent}
 ]
 
 @NgModule({
@@ -45,7 +45,6 @@ const routes : Routes = [
     EditorComponent,
     ToastComponent,
     AddPuzzleComponent,
-    ArticleComponent,
     FuromComponent,
     TipsComponent,
     AddTipsComponent
@@ -60,7 +59,8 @@ const routes : Routes = [
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     PuzzleService

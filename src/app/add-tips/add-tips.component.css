@@ -11,9 +11,9 @@
 }
 
 .shade{
-    position: absolute;
-    top: 25%;
-    left: 25%;
+    position: fixed;
+    top: 15%;
+    left: 35%;
 }
 
 .text{

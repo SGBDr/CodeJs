@@ -91,7 +91,7 @@ export class AddPuzzleComponent implements OnInit {
   }
 
   addTips(tip : string){
-    if(tip.trim() !== "" && tip.trim().length >= 6)this.tips.push([this.cons.length, tip])
+    if(tip.trim() !== "" && tip.trim().length >= 6)this.tips.push([this.tip.length, tip])
   }
 
   addTests():void{

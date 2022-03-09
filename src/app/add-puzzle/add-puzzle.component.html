@@ -5,11 +5,11 @@
           <h5>Name *</h5>
           <input type="text" placeholder="Puzzle Name" name="name" [(ngModel)]="name" class="name_text shadow">
         </div>
-        <h1>Preview (> 20 character) *</h1>
+        <h1>Preview (> 10 character) *</h1>
         <textarea class="overflow-auto preview shadow" name="preview" [(ngModel)]="preview" id="" rows="10"></textarea>
       </div>
       <div class="m-1 desc shadow p-3">
-        <h1>Description (> 100 character) *</h1>
+        <h1>Description (> 20 character) *</h1>
         <textarea class="description preview shadow" name="desc" [(ngModel)]="desc" id="" rows="15"></textarea>
       </div>
     </div>
@@ -139,7 +139,7 @@
           <button class="btn_test" (click)="runVerif1(a1.getSession().getValue())">Test</button>
           <h2>Output</h2>
           <div>
-            {{outmin}}
+            <pre>{{outmin}}</pre>
           </div>
         </code>
       </div>
@@ -169,7 +169,7 @@
           <button class="btn_test" (click)="runVerif2(a2.getSession().getValue())">Test</button>
           <h2>Output</h2>
           <div>
-            {{outverif}}
+            <pre>{{outverif}}</pre>
           </div>
         </code>
       </div>
@@ -196,7 +196,7 @@
         <code>
           <h2>Output</h2>
           <div class="">
-            {{outsolve}}
+            <pre>{{outsolve}}</pre>
           </div>
         </code>
       </div>
@@ -206,7 +206,7 @@
   <div class="mt-3 p-3 w-100 shadow">
     <button class="w-100 p-3 f_btn shadow rounded"
     (click)="sharPuzzle()"
-    [disabled]="!(nbre_v_test === tests.length && diff.trim() !== '' && kind.trim() !== '' && name.trim().length != 0 && preview.trim().length >= 20 && desc.trim().length >= 100)"
+    *ngIf="!(nbre_v_test != tests.length || diff.trim() === '' || kind.trim() === '' || name.trim().length === 0 || preview.trim().length < 10 || desc.trim().length < 20)"
     >
       Share Puzzle
     </button>

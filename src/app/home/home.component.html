@@ -39,28 +39,28 @@
             <h3>Easy</h3>
             <hr>
             <div class="row">
-                <app-puzzle *ngFor="let puzz of easy" [puzzle]="puzz" class="col-md-6 p-2"></app-puzzle>
+                <app-puzzle *ngFor="let puzz of easy" [puzzle]="puzz" class="col-md-3 p-2"></app-puzzle>
             </div>
         </div>
         <div class="" *ngIf="medium.length != 0">
             <h3>Medium</h3>
             <hr>
             <div class="row">
-                <app-puzzle *ngFor="let puzz of medium" [puzzle]="puzz" class="col-md-6 p-2"></app-puzzle>
+                <app-puzzle *ngFor="let puzz of medium" [puzzle]="puzz" class="col-md-3 p-2"></app-puzzle>
             </div>
         </div>
         <div class="" *ngIf="hard.length != 0">
             <h3>Hard</h3>
             <hr>
             <div class="row">
-                <app-puzzle *ngFor="let puzz of hard" [puzzle]="puzz" class="col-md-6 p-2"></app-puzzle>
+                <app-puzzle *ngFor="let puzz of hard" [puzzle]="puzz" class="col-md-3 p-2"></app-puzzle>
             </div>
         </div>
         <div class="" *ngIf="tohard.length != 0">
             <h3>Too Hard</h3>
             <hr>
             <div class="row">
-                <app-puzzle *ngFor="let puzz of tohard" [puzzle]="puzz" class="col-md-6 p-2"></app-puzzle>
+                <app-puzzle *ngFor="let puzz of tohard" [puzzle]="puzz" class="col-md-3 p-2"></app-puzzle>
             </div>
         </div>
         <div *ngIf="easy.length != 0 && medium.length != 0 && hard.length != 0 && tohard.length != 0">

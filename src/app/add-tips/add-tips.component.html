@@ -7,7 +7,7 @@
 
     <div class="collapse collapse-horizontale m-2" id="preview">
       <div class="card card-body">
-          <div class="p-0 h-0" *ngFor="let tp of tip">
+          <div class="p-0 h-0" *ngFor="let tp of tip.tip">
             <hr *ngIf='tp.name === "hr"'>
             <h1 *ngIf='tp.name === "h1"'><pre>{{tp.content}}</pre></h1>
             <h2 *ngIf='tp.name === "h2"'><pre>{{tp.content}}</pre></h2>
@@ -65,14 +65,15 @@
                         <button class="button shadow rounded" (click)="addsep()">HORIZONTAL</button>
                         <button class="button shadow rounded" [disabled]="true">VERTICAL</button>
                     </div>
+                    <button class="btn btn-sm btn-success" *ngIf="tip.tip.length != 0" (click)="share()">share</button>
                 </div>
                 <div class="overflow-auto shadow p-3" style="width: 50%;height: 550px;">
                     <h1>Architecture of your Tip</h1>
                     <hr>
-                    <div *ngFor="let tp of tip" class="bg-light shadow rounded m-3">
+                    <div *ngFor="let tp of tip.tip" class="bg-light shadow rounded m-3">
                       <div class="d-flex justify-content-between">
                         <h4 class="m-2">{{tp.name}}</h4>
-                        <svg xmlns="http://www.w3.org/2000/svg" (click)="tip.splice(tp.id, 1)" width="25" height="25" fill="currentColor" class="bi bi-eraser" viewBox="0 0 16 16">
+                        <svg xmlns="http://www.w3.org/2000/svg" (click)="tip.tip.splice(tp.id, 1)" width="25" height="25" fill="currentColor" class="bi bi-eraser" viewBox="0 0 16 16">
                           <path d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm2.121.707a1 1 0 0 0-1.414 0L4.16 7.547l5.293 5.293 4.633-4.633a1 1 0 0 0 0-1.414l-3.879-3.879zM8.746 13.547 3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z"/>
                         </svg>
                       </div>

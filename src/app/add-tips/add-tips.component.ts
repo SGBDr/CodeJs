@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TipService } from '../services/tip.service';
+import { Tip } from '../interface/tip.interface';
 
 @Component({
   selector: 'app-add-tips',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddTipsComponent implements OnInit {
 
-  tip : any[] = []
+  tip : Tip = {
+    name : '',
+    tip : []
+  }
   what : string = "Text"
   content : string = ""
   ad : boolean = false
@@ -17,7 +22,7 @@ export class AddTipsComponent implements OnInit {
 
   size:number = 0
 
-  constructor() { }
+  constructor(private tipS:TipService) { }
 
   ngOnInit(): void {
   }
@@ -30,11 +35,11 @@ export class AddTipsComponent implements OnInit {
 
   addsep(){
     let sep = {
-      id : this.tip.length,
+      id : this.tip.tip.length,
       desc : 'HR',
       name : 'hr'
     }
-    this.tip.push(sep)
+    this.tip.tip.push(sep)
   }
 
   add():number{
@@ -44,28 +49,28 @@ export class AddTipsComponent implements OnInit {
     }
     if(this.what === "Text"){
       let text = {
-        id : this.tip.length,
+        id : this.tip.tip.length,
         desc : this.textname,
         name : 'h' + this.size,
         content : this.content
       }
-      this.tip.push(text)
+      this.tip.tip.push(text)
     }else if (this.what === "Code"){
       let text = {
-        id : this.tip.length,
+        id : this.tip.tip.length,
         desc : this.textname,
         name : 'code',
         content : this.content
       }
-      this.tip.push(text)
+      this.tip.tip.push(text)
     }else {
       let text = {
-        id : this.tip.length,
+        id : this.tip.tip.length,
         desc : this.textname,
         name : 'important',
         content : this.content
       }
-      this.tip.push(text)
+      this.tip.tip.push(text)
     }
     this.ad = false
     return 0
@@ -76,7 +81,9 @@ export class AddTipsComponent implements OnInit {
     this.ad = true
   }
 
-  addSeparator(){}
+  share(){
+    this.tipS.add(this.tip)
+  }
 
 
 }

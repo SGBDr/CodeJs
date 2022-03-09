@@ -1,12 +1,27 @@
 .info{
+    height: auto;
+    width: 245px;
+    position: absolute;
     padding-top: 10px;
-    background-color: rgb(106, 106, 223);
-    margin: 2px;
-    border-radius: 5px;
-    width: 80px;
+    color: black;
+    font-weight: bold;
+    font-style: italic;
+    background-color: rgba(106, 106, 223, 0.733);
     text-align: center;
     justify-content: center;
     transition-duration: 0.5s;
+    margin: 2px;
+    opacity: 0;
+}
+
+.ii{
+    position: relative;
+    bottom: 20px;
+}
+
+.puzz:hover .info{
+    transform: translateY(-200px);
+    opacity: 1;
 }
 
 .info:hover{
@@ -19,4 +34,5 @@
 
 .puzz:hover{
     background-color: whitesmoke;
+    transform: scale(1.05);
 }

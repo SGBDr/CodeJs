@@ -72,11 +72,11 @@ export class HomeComponent implements OnInit {
         else this.tohard.push(y)
       })
     })
-    this.puzS.emit()
+    this.puzS.getPuzzel()
   }
 
   change1():void{
-    this.puzS.emit()
+    this.puzS.getPuzzel()
   }
 
   change() : void {
@@ -88,7 +88,7 @@ export class HomeComponent implements OnInit {
       this.index_languages = 0
       this.index_types = 0
     }
-    this.puzS.emit()
+    this.puzS.getPuzzel()
   }
 
   ngOnInit(): void {

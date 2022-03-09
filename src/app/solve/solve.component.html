@@ -26,7 +26,7 @@
                 <h6 class="m-2 alert alert-info">{{puzz.lan}}</h6>
             </div>
             <hr>
-            <h4> {{puzz.desc}} </h4>
+            <h4><pre>{{puzz.desc}}</pre></h4>
             <h5>note : {{puzz.note}}</h5>
             
             <hr>
@@ -34,8 +34,8 @@
             <div *ngFor="let p of puzz.test" class="border p-3 m-2 shadow bg-white">
                 <code>
                     Name : {{p.name}} <br>
-                    <strong> Input : {{p.input}} </strong> <br>
-                    <strong> output expected : {{p.output}} </strong>
+                    <strong> Input : <pre>{{p.input}}</pre> </strong> <br>
+                    <strong> output expected : <pre>{{p.output}}</pre>  </strong>
                 </code>
             </div>
             <hr>

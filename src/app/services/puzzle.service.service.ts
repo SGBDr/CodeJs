@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Puzzle } from '../interface/puzzle.interface';
@@ -6,8 +7,6 @@ import { Puzzle } from '../interface/puzzle.interface';
   providedIn: 'root'
 })
 export class PuzzleService{
-
-  
 
   puzzles : Puzzle[] = [
     {
@@ -70,7 +69,7 @@ export class PuzzleService{
         'When you tidy up you move on'
       ],
       display : true
-    },
+    }
   ]
 
   coffP = {
@@ -99,14 +98,37 @@ export class PuzzleService{
 
   puzzSubject = new Subject<Puzzle[]>()
 
-  constructor() {
-    this.emit()
+  constructor(private http: HttpClient) {
+    this.getPuzzel()
+  }
+
+  addPuzzel(p :Puzzle){
+    this.http.get("https://codejs-5d8e7-default-rtdb.firebaseio.com/puzzels.json").subscribe(
+      (response: any) => {
+        console.log(response)
+        p.id = response.length
+        this.http.put("https://codejs-5d8e7-default-rtdb.firebaseio.com/puzzels/" + p.id + ".json", p).subscribe(
+          response => {
+            this.getPuzzel()
+          }
+        )
+      }
+    )
+  }
+
+  getPuzzel(){
+    this.http.get("https://codejs-5d8e7-default-rtdb.firebaseio.com/puzzels.json").subscribe(
+      (response: any) => {
+        this.puzzles = []
+        for(let y of response)
+          if(y)this.puzzles.push(y)
+        this.emit()
+      }
+    )
   }
 
   addP(p : Puzzle){
-    this.puzzles.push(p)
-    this.emit()
-    console.log(this.puzzles)
+    this.addPuzzel(p)
   }
 
   emit(){
