@@ -37,10 +37,12 @@
       </div>
 
     <div class="collapse show collapse-horizontale m-2" id="create">
-        <div class="card card-body">
+        <div class="card">
             <div class="d-flex justify-content-between">
-                <div class="shadow p-2" style="width: 50%;height: 550px;">
+                <div class="shadow p-1 overflow-auto" style="width: 50%;height: 550px;">
                     <h2>Tools</h2>
+                    <input type="text" name="tipname" [(ngModel)]="tipname" id="" class="w-50 shadow bb"  placeholder="Tips Name">
+                    <button class="btn btn-sm btn-success" *ngIf="tip.tip.length !== 0 && tipname.trim() !== ''" (click)="share()">share</button>
                     <div class="border m-2 p-2">
                         <h6>TEXT</h6>
                         <hr>
@@ -65,7 +67,6 @@
                         <button class="button shadow rounded" (click)="addsep()">HORIZONTAL</button>
                         <button class="button shadow rounded" [disabled]="true">VERTICAL</button>
                     </div>
-                    <button class="btn btn-sm btn-success" *ngIf="tip.tip.length != 0" (click)="share()">share</button>
                 </div>
                 <div class="overflow-auto shadow p-3" style="width: 50%;height: 550px;">
                     <h1>Architecture of your Tip</h1>

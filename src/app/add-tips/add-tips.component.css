@@ -40,3 +40,13 @@
     border-radius: 5px;
     background-color: transparent;
 }
+
+.bb{
+    background-color: transparent;
+    height: 30px;
+    border: none;
+    transition-delay: 9999999999999999s;
+    padding: 3px;
+    margin-left: 8px;
+    margin-right: 8px;
+}

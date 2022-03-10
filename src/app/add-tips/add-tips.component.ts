@@ -19,6 +19,7 @@ export class AddTipsComponent implements OnInit {
 
   textname : string = ""
   error : string = ""
+  tipname : string = ""
 
   size:number = 0
 
@@ -82,6 +83,7 @@ export class AddTipsComponent implements OnInit {
   }
 
   share(){
+    this.tip.name = this.tipname
     this.tipS.add(this.tip)
   }
 
