@@ -24,12 +24,14 @@ import { TipsComponent } from './tips/tips.component';
 import { AddTipsComponent } from './add-tips/add-tips.component';
 import { PuzzleService } from './services/puzzle.service.service';
 import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
+import { SeeTipComponent } from './see-tip/see-tip.component';
 
 const routes : Routes = [
   {path: '', component: HomeComponent},
   {path:'home', component: HomeComponent},
   {path:'share', component: DocComponent},
   {path:'share/tips/add', component: AddTipsComponent},
+  {path:"share/tips/open/:id", component: SeeTipComponent},
   {path:'home/solve/:id', component: SolveComponent},
   {path:'furom', component: FuromComponent},
 ]
@@ -47,7 +49,8 @@ const routes : Routes = [
     AddPuzzleComponent,
     FuromComponent,
     TipsComponent,
-    AddTipsComponent
+    AddTipsComponent,
+    SeeTipComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

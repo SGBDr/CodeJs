@@ -1,0 +1,32 @@
+
+
+<div class="m-3 p-3 bg-white shadow">
+    <h1>{{tip.name}}</h1>
+    <hr>
+    <div class="p-0 h-0" *ngFor="let tp of tip.tip">
+        <hr *ngIf='tp.name === "hr"'>
+        <h1 *ngIf='tp.name === "h1"'><pre>{{tp.content}}</pre></h1>
+        <h2 *ngIf='tp.name === "h2"'><pre>{{tp.content}}</pre></h2>
+        <h3 *ngIf='tp.name === "h3"'><pre>{{tp.content}}</pre></h3>
+        <h4 *ngIf='tp.name === "h4"'><pre>{{tp.content}}</pre></h4>
+        <h5 *ngIf='tp.name === "h5"'><pre>{{tp.content}}</pre></h5>
+        <h6 *ngIf='tp.name === "h6"'><pre>{{tp.content}}</pre></h6>
+        <div class="bg-dark text-white shadow p-2 rounded" *ngIf='tp.name === "code"'>
+          <div class="d-flex">
+            <div style="background-color: green; margin: 5px; width: 15px; height: 15px;border-radius: 100%;"></div>
+            <div style="background-color: red; margin: 5px;width: 15px; height: 15px;border-radius: 100%;"></div>
+            <div style="background-color: yellow; margin: 5px;width: 15px; height: 15px;border-radius: 100%;"></div>
+          </div>
+          <code class="overflow-auto p-3" style="font-size: 20px;">
+            <pre>{{tp.content}}</pre>
+          </code>
+        </div>
+        <div class="shadow p-3 m-2 mb-3 rounded" *ngIf='tp.name === "important"'>
+          <strong>
+            <code class="overflow-auto" style="font-size: 20px;">
+              <pre>{{tp.content}}</pre>
+            </code>
+          </strong>
+        </div>
+      </div>
+</div>

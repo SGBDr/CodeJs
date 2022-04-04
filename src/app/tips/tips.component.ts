@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscriber, Subscription } from 'rxjs';
+import { Tip } from '../interface/tip.interface';
+import { TipService } from '../services/tip.service';
 
 @Component({
   selector: 'app-tips',
@@ -8,9 +11,21 @@ import { Router } from '@angular/router';
 })
 export class TipsComponent implements OnInit {
 
-  constructor(private router : Router) { }
+  subscription = new Subscription()
+  tips : Tip[] = []
+
+  constructor(public router : Router, private tipS : TipService) {
+    this.subscription = this.tipS.TipSubject.subscribe(x => {
+      this.tips = x
+    })
+  }
+
+  open(index : number){
+    this.router.navigate(['share/tips/open/' + index])
+  }
 
   ngOnInit(): void {
+    this.tipS.getTips()
   }
 
   addTips():void {
